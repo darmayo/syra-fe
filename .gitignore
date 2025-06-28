@@ -23,3 +23,9 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# AI and prompt related files
+.bolt/
+*.prompt
+*.ai
+*.copilot
