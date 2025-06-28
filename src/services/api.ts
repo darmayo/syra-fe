@@ -12,7 +12,7 @@ function getAuthHeaders() {
 }
 
 async function handleResponse(response: Response) {
-  if (response.status === 403) {
+  if (response.status === 401 || response.status === 403) {
     localStorage.removeItem('token');
     window.location.replace('/');
     throw new Error('Unauthorized');
