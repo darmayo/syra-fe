@@ -30,7 +30,8 @@ function App() {
   const {
     data: securityLogs,
     loading: logsLoading,
-    error: logsError
+    error: logsError,
+    refetch: refetchSecurityLogs
   } = useApi<SecurityLog[]>(
     () => apiService.getSecurityLogs()
   );
@@ -47,12 +48,14 @@ function App() {
   const handleAddDomain = async (domainData: { name: string; url: string }) => {
     await apiService.addDomain(domainData);
     refetchDomains();
+    refetchSecurityLogs();
     refetchAttackStats();
   };
 
   const handleDeleteDomain = async (domainId: string) => {
     await apiService.deleteDomain(domainId);
     refetchDomains();
+    refetchSecurityLogs();
     refetchAttackStats();
   };
 
